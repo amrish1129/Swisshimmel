@@ -39,12 +39,30 @@ project(':sh-website') {
     apply from: file("${rootDir}/gradle/quality.gradle")
 
     dependencies {
+    	/*provided(
+                'javax.servlet:javax.servlet-api:3.1.0',
+                'org.apache.commons:commons-lang3:3.3',
+                'com.google.code.simple-spring-memcached:spymemcached:2.8.4'
+        )*/
         compile(
-                project(':sh-common')
+                project(':sh-common'),
+                'javax.inject:javax.inject:1',
+                "org.springframework:spring-webmvc:${springVersion}",
+                "org.springframework:spring-context-support:${springVersion}",
+                "org.springframework:spring-jdbc:${springVersion}",
+                "org.springframework:spring-orm:${springVersion}",
+                'javax.validation:validation-api:1.1.0.Final',
+                'org.hibernate:hibernate-validator:5.1.0.Final',
+                'org.slf4j:slf4j-api:1.7.6',
+                'org.hibernate:hibernate-entitymanager:4.3.4.Final',
+                'org.apache.httpcomponents:httpclient:4.3.3',
+                'javax.mail:mail:1.4',
+                'com.mchange:c3p0:0.9.5'
         )
 
         runtime(
-                
+                "org.springframework:spring-test:${springVersion}",
+                'org.hsqldb:hsqldb:2.3.2'
         )
 
         testCompile(
