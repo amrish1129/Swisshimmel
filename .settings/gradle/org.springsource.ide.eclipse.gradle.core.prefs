@@ -1,5 +1,5 @@
 #org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences
-#Mon Feb 15 00:55:31 IST 2016
-build.family.org.gradle.tooling.model.eclipse.HierarchicalEclipseProject=;sh-common;sh-core;sh-intranet;sh-website;
+#Mon Feb 15 10:09:22 IST 2016
+build.family.org.gradle.tooling.model.eclipse.HierarchicalEclipseProject=;sh-admin;sh-common;sh-core;sh-website;
 org.springsource.ide.eclipse.gradle.linkedresources=
 org.springsource.ide.eclipse.gradle.rootprojectloc=

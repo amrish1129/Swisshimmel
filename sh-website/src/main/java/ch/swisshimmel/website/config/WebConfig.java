@@ -11,7 +11,7 @@ public class WebConfig implements WebApplicationInitializer {
 	public void onStartup(ServletContext servletContext)
 			throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
