@@ -14,7 +14,7 @@ def springVersion = '4.1.4.RELEASE'
 project(':sh-core') {
 // The core module contains the core-framework components 
 // that are used by the other modules of our application.
-    apply from: file("${rootDir}/gradle/quality.gradle")
+   // apply from: file("${rootDir}/gradle/quality.gradle")
 
     dependencies {
         compile(
@@ -36,7 +36,7 @@ project(':sh-common') {
 project(':sh-website') {
 // The web module.
     apply from: file("${rootDir}/gradle/web.gradle")
-    apply from: file("${rootDir}/gradle/quality.gradle")
+  //  apply from: file("${rootDir}/gradle/quality.gradle")
 
     dependencies {
     	/*provided(
@@ -62,11 +62,14 @@ project(':sh-website') {
                 'org.apache.httpcomponents:httpclient:4.3.3',
                 'javax.mail:mail:1.4',
                 'com.mchange:c3p0:0.9.5'
+                
         )
 
         runtime(
                 "org.springframework:spring-test:${springVersion}",
-                'org.hsqldb:hsqldb:2.3.2'
+                'org.hsqldb:hsqldb:2.3.2',
+                'mysql:mysql-connector-java:5.1.13',
+                'javax.servlet:jstl:1.2'
         )
 
         testCompile(
@@ -78,7 +81,7 @@ project(':sh-website') {
 project(':sh-admin') {
 // Module for admin and backend works
     apply from: file("${rootDir}/gradle/web.gradle")
-    apply from: file("${rootDir}/gradle/quality.gradle")
+    //apply from: file("${rootDir}/gradle/quality.gradle")
 
     dependencies {
         compile(
