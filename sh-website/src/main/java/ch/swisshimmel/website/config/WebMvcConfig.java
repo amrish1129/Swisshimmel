@@ -3,6 +3,7 @@ package ch.swisshimmel.website.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan( { "ch.swisshimmel.website" })
+@EnableTransactionManagement(proxyTargetClass = true)
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
     
     /*@Override
@@ -43,6 +45,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         bean.setSuffix(".jsp");
         return bean;
     }
+    
+    
     
    /* @Bean(name = "multipartResolver")
     public CommonsMultipartResolver getMultipartResolver() {
