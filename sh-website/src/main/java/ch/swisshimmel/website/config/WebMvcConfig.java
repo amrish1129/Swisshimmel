@@ -9,6 +9,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import ch.swisshimmel.website.common.view.JstlView;
+
 /**
  * Spring MVC Configuration.
  * 
@@ -38,14 +40,21 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         configurer.enable();
     }*/
     
-    @Bean(name = "HelloWorld")
+    @Bean(name = "swisshimmel")
     public ViewResolver jspViewResolver() {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setViewClass(JstlView.class);
         bean.setPrefix("/WEB-INF/views/");
         bean.setSuffix(".jsp");
         return bean;
     }
     
+    
+   /* <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+            p:viewClass="com.my.app.view.JstlView"
+            p:prefix="/WEB-INF/views/"
+            p:suffix=".jsp"/>
+    */
     
     
    /* @Bean(name = "multipartResolver")
