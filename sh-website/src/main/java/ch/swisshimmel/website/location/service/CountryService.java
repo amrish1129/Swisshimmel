@@ -2,7 +2,7 @@ package ch.swisshimmel.website.location.service;
 
 import java.util.List;
 
-import ch.swisshimmel.website.persist.location.entity.Country;
+import ch.swisshimmel.website.location.persist.entity.Country;
 
 public interface CountryService {
 

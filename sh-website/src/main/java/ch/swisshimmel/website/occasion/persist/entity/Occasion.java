@@ -1,4 +1,4 @@
-package ch.swisshimmel.website.persist.occasion.entity;
+package ch.swisshimmel.website.occasion.persist.entity;
 
 import java.sql.Date;
 import java.util.List;

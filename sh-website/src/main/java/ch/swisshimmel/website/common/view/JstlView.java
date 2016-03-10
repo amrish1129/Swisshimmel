@@ -13,11 +13,11 @@ public class JstlView extends InternalResourceView {
     protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         // set original view being asked for as a request parameter
-     // Expose the model object as request attributes.
+        // Expose the model object as request attributes.
         exposeModelAsRequestAttributes(model,request);
 
-   // Determine the path for the request dispatcher.
-   String dispatcherPath = prepareForRendering(request, response);
+       // Determine the path for the request dispatcher.
+       String dispatcherPath = prepareForRendering(request, response);
    
    
         request.setAttribute("partial", dispatcherPath.substring(dispatcherPath.lastIndexOf("/") + 1));

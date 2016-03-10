@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ch.swisshimmel.website.persist.property.dao.PropertyDAO;
-import ch.swisshimmel.website.persist.property.entity.Property;
+import ch.swisshimmel.website.property.persist.dao.PropertyDAO;
+import ch.swisshimmel.website.property.persist.entity.Property;
  
 
  

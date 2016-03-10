@@ -1,8 +1,8 @@
-package ch.swisshimmel.website.persist.property.dao;
+package ch.swisshimmel.website.property.persist.dao;
 
 import java.util.List;
 
-import ch.swisshimmel.website.persist.property.entity.Property;
+import ch.swisshimmel.website.property.persist.entity.Property;
  
 public interface PropertyDAO {
  

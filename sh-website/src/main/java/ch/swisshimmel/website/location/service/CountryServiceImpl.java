@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ch.swisshimmel.website.persist.location.dao.CountryDAO;
-import ch.swisshimmel.website.persist.location.entity.Country;
+import ch.swisshimmel.website.location.persist.dao.CountryDAO;
+import ch.swisshimmel.website.location.persist.entity.Country;
 
 /**
  * @author Manohar Kumar

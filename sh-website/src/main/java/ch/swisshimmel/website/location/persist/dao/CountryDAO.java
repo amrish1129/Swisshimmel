@@ -1,8 +1,8 @@
-package ch.swisshimmel.website.persist.location.dao;
+package ch.swisshimmel.website.location.persist.dao;
 
 import java.util.List;
 
-import ch.swisshimmel.website.persist.location.entity.Country;
+import ch.swisshimmel.website.location.persist.entity.Country;
 
 public interface CountryDAO {
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import ch.swisshimmel.website.persist.property.entity.Property;
+import ch.swisshimmel.website.property.persist.entity.Property;
 import ch.swisshimmel.website.property.service.PropertyService;
 
 @Controller

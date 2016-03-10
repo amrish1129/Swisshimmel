@@ -1,4 +1,4 @@
-package ch.swisshimmel.website.persist.property.entity;
+package ch.swisshimmel.website.property.persist.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

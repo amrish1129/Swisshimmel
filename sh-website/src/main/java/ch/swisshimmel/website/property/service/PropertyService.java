@@ -2,7 +2,7 @@ package ch.swisshimmel.website.property.service;
 
 import java.util.List;
 
-import ch.swisshimmel.website.persist.property.entity.Property;
+import ch.swisshimmel.website.property.persist.entity.Property;
 
  
 public interface PropertyService {

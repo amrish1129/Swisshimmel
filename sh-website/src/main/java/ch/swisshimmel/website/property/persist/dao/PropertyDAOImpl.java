@@ -1,4 +1,4 @@
-package ch.swisshimmel.website.persist.property.dao;
+package ch.swisshimmel.website.property.persist.dao;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import ch.swisshimmel.website.persist.property.entity.Property;
+import ch.swisshimmel.website.property.persist.entity.Property;
  
 
  

@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import ch.swisshimmel.website.location.persist.entity.Country;
 import ch.swisshimmel.website.location.service.CountryService;
-import ch.swisshimmel.website.persist.location.entity.Country;
 
 @Controller
 public class CountryController {
-
     
     @Autowired
     private CountryService service;
