@@ -1,3 +1,3 @@
 <hr>
-                                           I am header 
+                        <center>                   I am header </center>
 <hr>

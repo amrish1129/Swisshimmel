@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="OCCASION")
 public class Occasion {
@@ -21,28 +23,44 @@ public class Occasion {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int occasion_id;
     
-  //  @Column(name="occasionName")
+    @NotEmpty(message="Please enter a Occasion Name")
+    @Column(name="occasionName")
     private String occasionName;
     
-    //@Column(name="city")
+    @Column(name="city")
     private String city;
     
-   // @Column(name="country")
+    @Column(name="country")
+    @NotEmpty(message="Please enter a country Name")
     private String country;
     
-    //@Column(name="comment")
+    @Column(name="comment")
     private String comment;
 
-    //@Column(name="wikiLink")
+    @Column(name="wikiLink")
     private String  wikiLink ;
     
-    //@Column(name="occasionName")
+   // @Column(name="occasionName")
     private boolean repeatsEveryYear;
     
-    //@Column(name="timeEnteredBy")
+    @Column(name="timeEnteredBy")
     private Date timeEnteredBy;
     
     
+    
+    
+    private String formDate;
+    
+    
+    
+    public String getFormDate() {
+        return formDate;
+    }
+
+    public void setFormDate(String formDate) {
+        this.formDate = formDate;
+    }
+
     @OneToMany(targetEntity=OccasionTime.class, mappedBy="occasion_id", fetch=FetchType.EAGER)
     private List<OccasionTime> occasionTimesList;
 

@@ -1,3 +1,3 @@
 <hr>
-                                           I am Footer 
+                                   <center>        I am Footer </center>
 <hr>
