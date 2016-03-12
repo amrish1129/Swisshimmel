@@ -20,9 +20,9 @@ public class JstlView extends InternalResourceView {
        String dispatcherPath = prepareForRendering(request, response);
    
    
-        request.setAttribute("partial", dispatcherPath.substring(dispatcherPath.lastIndexOf("/") + 1));
+        request.setAttribute("body", dispatcherPath.substring(dispatcherPath.lastIndexOf("/") + 1));
  
         //request.setAttribute("partial", prepareForRendering(request, response));
-        request.getRequestDispatcher("/WEB-INF/views/template.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/layout.jsp").forward(request, response);
     }
 }

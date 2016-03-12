@@ -58,10 +58,9 @@ public class OccasionDAOImpl implements OccasionDAO {
     }
 
     @Override
-    @Transactional
     public Occasion getOccasionById(int id) {
         Session session = this.sessionFactory.getCurrentSession();      
-        Occasion o = (Occasion) session.load(Occasion.class, new Integer(id));
+        Occasion o = (Occasion) session.get(Occasion.class, new Integer(id));
         return o;
     }
 
@@ -73,7 +72,7 @@ public class OccasionDAOImpl implements OccasionDAO {
         if(null != o){
             session.delete(o);
         }
-        logger.info("Country deleted successfully, Country details="+o);
+        logger.info("Occasion deleted successfully, Occasion details="+o.getOccasionName());
         
     }
 

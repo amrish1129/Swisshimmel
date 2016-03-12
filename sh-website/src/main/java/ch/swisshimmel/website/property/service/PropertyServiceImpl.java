@@ -60,36 +60,4 @@ public class PropertyServiceImpl implements PropertyService {
         return null;
     }
  
-    
- 
-    /*@Override
-    @Transactional
-    public void addProperty(Property p) {
-        this.personDAO.addPerson(p);
-    }
- 
-    @Override
-    @Transactional
-    public void updateProperty(Property p) {
-        this.personDAO.updatePerson(p);
-    }
- 
-    @Override
-    @Transactional
-    public List<Property> listProperty() {
-        return this.personDAO.listPersons();
-    }
- 
-    @Override
-    @Transactional
-    public Person getPropertyById(int id) {
-        return this.personDAO.getPersonById(id);
-    }
- 
-    @Override
-    @Transactional
-    public void removeProperty(String id) {
-        this.personDAO.removePerson(id);
-    }
- */
 }

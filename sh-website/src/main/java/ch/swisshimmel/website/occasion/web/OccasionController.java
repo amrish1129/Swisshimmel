@@ -9,9 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import ch.swisshimmel.website.common.constants.OccasionConstants;
+import ch.swisshimmel.website.common.ds.OccasionDS;
 import ch.swisshimmel.website.occasion.persist.entity.Occasion;
 import ch.swisshimmel.website.occasion.service.OccasionService;
 
@@ -25,6 +28,7 @@ public class OccasionController {
 	    public String listProperty(Model model) {
 	        model.addAttribute("occasion", new Occasion());
 	        model.addAttribute("listOccasion", this.occasionService.listOccasion());
+	        model.addAttribute(OccasionConstants.OCCASION_VALUE_DS,getOccDisSettings(OccasionConstants.ADD_OCCASION));
 	        return "occasion";
 	    }
 	     
@@ -37,13 +41,33 @@ public class OccasionController {
 	                return "occasion";
 	           }
 	        occasionService.addOccasion(o);
-	    
-	                                                                                                                              
 	         
 	        return "redirect:/occasion";
 	         
 	    }
 	     
-	   
-	   
+	     
+	    //For add and update Property both
+        @RequestMapping("/addEventTime/{id}")
+        public String addEventTime(@PathVariable("id") int id, Model model ){
+            Occasion o =  occasionService.getOccasionById(id);
+            
+           // o.setEnabled(true);
+            model.addAttribute("occasion", o);
+            model.addAttribute(OccasionConstants.OCCASION_VALUE_DS,getOccDisSettings(OccasionConstants.ADD_EVENT_TIME));
+            return "addOccasionEvent";
+             
+        }
+
+        private OccasionDS getOccDisSettings(String displayKey) {
+            OccasionDS ds = new OccasionDS();
+           if(OccasionConstants.ADD_EVENT_TIME.equals(displayKey)) {
+               ds.setOccasionValuesEnabled(false);
+               ds.setViewButtonEnabled(false);
+           } else if (OccasionConstants.ADD_OCCASION.equals(displayKey)){
+               ds.setOccasionValuesEnabled(true);
+               ds.setViewButtonEnabled(true);
+           }
+            return ds;
+        }
 }

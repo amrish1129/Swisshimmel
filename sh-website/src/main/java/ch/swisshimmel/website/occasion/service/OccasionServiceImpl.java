@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ch.swisshimmel.website.occasion.persist.dao.OccasionDAO;
 import ch.swisshimmel.website.occasion.persist.entity.Occasion;
 import ch.swisshimmel.website.occasion.persist.entity.OccasionTime;
-import ch.swisshimmel.website.property.persist.dao.PropertyDAO;
-import ch.swisshimmel.website.property.persist.entity.Property;
  
 
  
@@ -20,76 +18,46 @@ public class OccasionServiceImpl implements OccasionService {
     @Autowired
     private OccasionDAO occasionDAO;
 
+    
     @Override
+    @Transactional
     public void addOccasion(Occasion o) {
-        // TODO Auto-generated method stub
+        this.occasionDAO.addOccasion(o);
         
     }
 
+    
     @Override
+    @Transactional
     public void updateOccasion(Occasion o) {
-        // TODO Auto-generated method stub
+        this.occasionDAO.updateOccasion(o);
         
     }
 
     @Override
+    @Transactional
     public List<Occasion> listOccasion() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.occasionDAO.listOccasion();
     }
 
     @Override
+    @Transactional
     public Occasion getOccasionById(int id) {
-        // TODO Auto-generated method stub
-        return null;
+        return this.occasionDAO.getOccasionById(id);
     }
 
     @Override
+    @Transactional
     public void removeOccasion(int id) {
-        // TODO Auto-generated method stub
+        this.occasionDAO.removeOccasion(id);
         
     }
 
     @Override
+    @Transactional
     public List<OccasionTime> getUpcomingOccassion(int i) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    
-    
-    
- 
-    
- 
-    /*@Override
-    @Transactional
-    public void addProperty(Property p) {
-        this.personDAO.addPerson(p);
-    }
- 
-    @Override
-    @Transactional
-    public void updateProperty(Property p) {
-        this.personDAO.updatePerson(p);
-    }
- 
-    @Override
-    @Transactional
-    public List<Property> listProperty() {
-        return this.personDAO.listPersons();
-    }
- 
-    @Override
-    @Transactional
-    public Person getPropertyById(int id) {
-        return this.personDAO.getPersonById(id);
-    }
- 
-    @Override
-    @Transactional
-    public void removeProperty(String id) {
-        this.personDAO.removePerson(id);
-    }
- */
 }

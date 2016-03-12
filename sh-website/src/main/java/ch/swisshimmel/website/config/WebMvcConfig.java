@@ -8,6 +8,9 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import ch.swisshimmel.website.common.view.JstlView;
 
@@ -28,18 +31,6 @@ import ch.swisshimmel.website.common.view.JstlView;
 @EnableTransactionManagement(proxyTargetClass = true)
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
     
-    /*@Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations(
-                "/resources/");
-    }
-    
-    @Override
-    public void configureDefaultServletHandling(
-            DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }*/
-    
     @Bean(name = "swisshimmel")
     public ViewResolver jspViewResolver() {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
@@ -50,24 +41,42 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     }
     
     
-   /* <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-            p:viewClass="com.my.app.view.JstlView"
-            p:prefix="/WEB-INF/views/"
-            p:suffix=".jsp"/>
-    */
-    
-    
-   /* @Bean(name = "multipartResolver")
-    public CommonsMultipartResolver getMultipartResolver() {
-        return new CommonsMultipartResolver();
+   /* @Bean
+    public TilesViewResolver getTilesViewResolver() {
+        TilesViewResolver tilesViewResolver = new TilesViewResolver();
+        tilesViewResolver.setViewClass(TilesView.class);
+        return tilesViewResolver;
     }
+    @Bean
+    public TilesConfigurer getTilesConfigurer() {
+        TilesConfigurer tilesConfigurer = new TilesConfigurer();
+        tilesConfigurer.setCheckRefresh(true);
+        tilesConfigurer.setDefinitions("/WEB-INF/tiles.xml");
+        tilesConfigurer.setDefinitionsFactoryClass(TilesDefinitionsConfig.class);
+
+        // Add apache tiles definitions
+        TilesDefinitionsConfig.addDefinitions();
+
+        return tilesConfigurer;
+    }
+*/
+    /*<bean id="viewResolver"
+            class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+            <property name="viewClass">
+                <value>
+                    org.springframework.web.servlet.view.tiles2.TilesView
+                </value>
+            </property>
+        </bean>
+        <bean id="tilesConfigurer"
+            class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+            <property name="definitions">
+                <list>
+                    <value>/WEB-INF/tiles.xml</value>
+                </list>
+            </property>
+        </bean>*/
     
-    @Bean(name = "messageSource")
-    public ReloadableResourceBundleMessageSource getMessageSource() {
-        ReloadableResourceBundleMessageSource resource = new ReloadableResourceBundleMessageSource();
-        resource.setBasename("classpath:messages");
-        resource.setDefaultEncoding("UTF-8");
-        return resource;
-    }*/
     
+ 
 }
