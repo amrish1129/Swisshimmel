@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="OCCASION_TIME")
@@ -25,14 +26,51 @@ public class OccasionTime {
     @Column(name="dateTo")
     private String dateTo;
 
+    @Column(name="comment")
+    private String comment;
+    
     @Column(name="timeEnteredBy")
     private String timeEnteredBy;
+
+    @Column(name="wiki")
+    private String wiki;
     
-   
- 
+
     @ManyToOne(optional=false)
     @JoinColumn(name="occasion_id",referencedColumnName="occasion_id", insertable=false, updatable=false)
     private Occasion occasion;
+
+    @Transient
+    private String dateFromStr;
+    
+    @Transient
+    private String dateToStr;
+
+    
+    
+    public String getWiki() {
+        return wiki;
+    }
+
+    public void setWiki(String wiki) {
+        this.wiki = wiki;
+    }
+
+    public String getDateFromStr() {
+        return dateFromStr;
+    }
+
+    public void setDateFromStr(String dateFromStr) {
+        this.dateFromStr = dateFromStr;
+    }
+
+    public String getDateToStr() {
+        return dateToStr;
+    }
+
+    public void setDateToStr(String dateToStr) {
+        this.dateToStr = dateToStr;
+    }
 
     public int getOccasion_time_id() {
         return occasion_time_id;
@@ -83,4 +121,11 @@ public class OccasionTime {
         this.occasion = occasion;
     }
     
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }

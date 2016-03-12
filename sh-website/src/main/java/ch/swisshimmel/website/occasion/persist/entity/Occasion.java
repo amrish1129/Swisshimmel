@@ -1,3 +1,4 @@
+
 package ch.swisshimmel.website.occasion.persist.entity;
 
 import java.sql.Date;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -40,32 +42,32 @@ public class Occasion {
     @Column(name="wikiLink")
     private String  wikiLink ;
     
-   // @Column(name="occasionName")
+    @Column(name="repeatsEveryYear")
     private boolean repeatsEveryYear;
     
     @Column(name="timeEnteredBy")
     private Date timeEnteredBy;
     
+    @Transient
+    private boolean readOnly;
     
     
-    
-    private String formDate;
-    
-    
-    
-    public String getFormDate() {
-        return formDate;
-    }
-
-    public void setFormDate(String formDate) {
-        this.formDate = formDate;
-    }
 
     @OneToMany(targetEntity=OccasionTime.class, mappedBy="occasion_id", fetch=FetchType.EAGER)
-    private List<OccasionTime> occasionTimesList;
+    private List<OccasionTime> occasionTimes;
 
     
     
+   
+
+    public boolean isReadOnly() {
+        return readOnly;
+    }
+
+    public void setReadOnly(boolean readOnly) {
+        this.readOnly = readOnly;
+    }
+
     public int getOccasion_id() {
         return occasion_id;
     }
@@ -131,11 +133,14 @@ public class Occasion {
     }
 
     public List<OccasionTime> getOccasionTimes() {
-        return occasionTimesList;
+        if(null == occasionTimes || occasionTimes.size() == 0 ) {
+            occasionTimes.add(new OccasionTime());
+        }
+        return occasionTimes;
     }
 
     public void setOccasionTimes(List<OccasionTime> occasionTimesList) {
-        this.occasionTimesList = occasionTimesList;
+        this.occasionTimes = occasionTimesList;
     }   
     
 }
