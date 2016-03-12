@@ -40,6 +40,8 @@ CREATE TABLE dbperson.OCCASION_TIME
  dateTo date NOT NULL, 
  dateFrom date NOT NULL ,
  timeEnteredBy varchar(255),
+ comment varchar(50),
+ wiki varchar(1000),
  `occasion_id` int(11) unsigned NOT NULL,
  primary key (`occasion_time_id`),
  FOREIGN KEY (`occasion_id`) REFERENCES dbperson.OCCASION(`occasion_id`)
