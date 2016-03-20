@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
@@ -41,42 +42,15 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     }
     
     
-   /* @Bean
-    public TilesViewResolver getTilesViewResolver() {
-        TilesViewResolver tilesViewResolver = new TilesViewResolver();
-        tilesViewResolver.setViewClass(TilesView.class);
-        return tilesViewResolver;
+   @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/images/**").addResourceLocations("/images/");
     }
-    @Bean
-    public TilesConfigurer getTilesConfigurer() {
-        TilesConfigurer tilesConfigurer = new TilesConfigurer();
-        tilesConfigurer.setCheckRefresh(true);
-        tilesConfigurer.setDefinitions("/WEB-INF/tiles.xml");
-        tilesConfigurer.setDefinitionsFactoryClass(TilesDefinitionsConfig.class);
-
-        // Add apache tiles definitions
-        TilesDefinitionsConfig.addDefinitions();
-
-        return tilesConfigurer;
-    }
-*/
-    /*<bean id="viewResolver"
-            class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-            <property name="viewClass">
-                <value>
-                    org.springframework.web.servlet.view.tiles2.TilesView
-                </value>
-            </property>
-        </bean>
-        <bean id="tilesConfigurer"
-            class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
-            <property name="definitions">
-                <list>
-                    <value>/WEB-INF/tiles.xml</value>
-                </list>
-            </property>
-        </bean>*/
     
+    
+  
+    
+   
     
  
 }

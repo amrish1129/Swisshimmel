@@ -7,7 +7,6 @@
 <c:if test="${!empty listOccasion}">
     <table class="tg">
     <tr>
-        <th width="80">Occasion ID</th>
          <th width="80">Occasion Name</th>
         <th width="80">City</th>
         <th width="120">Country</th>
@@ -19,7 +18,7 @@
     
   <c:forEach items="${listOccasion}" var="occasion">
         <tr>
-            <td>${occasion.occasion_id}</td>
+            
             <td>${occasion.occasionName}</td>
             <td>${occasion.city}</td>
             <td>${occasion.country}</td>

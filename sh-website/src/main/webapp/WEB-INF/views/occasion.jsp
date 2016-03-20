@@ -25,12 +25,7 @@
       }
       </script>
       <!-- Javascript -->
-      <script>
-         $(function() {
-            $( "#datepicker-13" ).datepicker();
-            $( "#datepicker-13" ).datepicker("disbale");
-         });
-      </script>
+  
       <script>
       $(function() {
  	 	$("#occasionName").focus();
