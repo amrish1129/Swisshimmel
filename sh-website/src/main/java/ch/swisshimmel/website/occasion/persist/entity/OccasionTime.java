@@ -1,13 +1,24 @@
 
 package ch.swisshimmel.website.occasion.persist.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import ch.swisshimmel.website.common.util.DateUtil;
 
 @Entity
 @Table(name="OCCASION_TIME")
@@ -15,16 +26,17 @@ public class OccasionTime {
     
     @Id
     @Column(name="occasion_time_id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int occasion_time_id;
     
     @Column(name="occasion_id" )
-    private int occasion_id;
+    private int occasion_id;    
     
     @Column(name="dateFrom")
-    private String dateFrom;
+    private Date dateFrom;
     
     @Column(name="dateTo")
-    private String dateTo;
+    private Date dateTo;
 
     @Column(name="comment")
     private String comment;
@@ -41,6 +53,9 @@ public class OccasionTime {
     private Occasion occasion;
 
     @Transient
+    @NotBlank(message="Mandatory Field")
+    @NotNull(message="Mandatory Field")
+    @NotEmpty
     private String dateFromStr;
     
     @Transient
@@ -51,25 +66,27 @@ public class OccasionTime {
     public String getWiki() {
         return wiki;
     }
-
+    
     public void setWiki(String wiki) {
         this.wiki = wiki;
     }
 
     public String getDateFromStr() {
-        return dateFromStr;
+        return DateUtil.convertDateToStr(dateFrom);
     }
 
     public void setDateFromStr(String dateFromStr) {
         this.dateFromStr = dateFromStr;
+        this.dateFrom = DateUtil.convertStrToDate(dateFromStr);
     }
 
     public String getDateToStr() {
-        return dateToStr;
+        return DateUtil.convertDateToStr(dateTo);
     }
 
     public void setDateToStr(String dateToStr) {
         this.dateToStr = dateToStr;
+       this.dateTo =  DateUtil.convertStrToDate(dateToStr);
     }
 
     public int getOccasion_time_id() {
@@ -88,19 +105,19 @@ public class OccasionTime {
         this.occasion_id = occasion_id;
     }
 
-    public String getDateFrom() {
+    public Date getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(String dateFrom) {
+    public void setDateFrom(Date dateFrom) {
         this.dateFrom = dateFrom;
     }
 
-    public String getDateTo() {
+    public Date getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(String dateTo) {
+    public void setDateTo(Date dateTo) {
         this.dateTo = dateTo;
     }
 

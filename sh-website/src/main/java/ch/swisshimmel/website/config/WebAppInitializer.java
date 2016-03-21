@@ -14,6 +14,7 @@ public class WebAppInitializer extends AbstractWebAppInitializer {
    /* @Override
     public void onStartup(ServletContext servletContext)
             throws ServletException {
+<<<<<<< HEAD
         // Create the 'root' Spring application context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         rootContext.register(WebMvcConfig.class);
@@ -33,6 +34,9 @@ public class WebAppInitializer extends AbstractWebAppInitializer {
         dispatcher.addMapping("/");
         
         servletContext.addFilter("platformFilter", new SignatureFilter()).addMappingForUrlPatterns(null, false, "/*");
+=======
+      
+>>>>>>> e10dbfe23875aad42c7f825491eaf2fde4c09805
         
         /*AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
         ctx.register(WebMvcConfig.class);

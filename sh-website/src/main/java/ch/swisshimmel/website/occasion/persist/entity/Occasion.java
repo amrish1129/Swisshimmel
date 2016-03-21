@@ -1,9 +1,11 @@
 
 package ch.swisshimmel.website.occasion.persist.entity;
 
-import java.sql.Date;
+import java.sql.Date; 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -48,25 +49,14 @@ public class Occasion {
     @Column(name="timeEnteredBy")
     private Date timeEnteredBy;
     
-    @Transient
-    private boolean readOnly;
-    
-    
-
-    @OneToMany(targetEntity=OccasionTime.class, mappedBy="occasion_id", fetch=FetchType.EAGER)
-    private List<OccasionTime> occasionTimes;
-
-    
     
    
+    @OneToMany(targetEntity=OccasionTime.class, mappedBy="occasion_id", fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
+    private List<OccasionTime> occasionTimes = new ArrayList<OccasionTime>();
 
-    public boolean isReadOnly() {
-        return readOnly;
-    }
-
-    public void setReadOnly(boolean readOnly) {
-        this.readOnly = readOnly;
-    }
+    
+   
+    
 
     public int getOccasion_id() {
         return occasion_id;
@@ -134,6 +124,7 @@ public class Occasion {
 
     public List<OccasionTime> getOccasionTimes() {
         if(null == occasionTimes || occasionTimes.size() == 0 ) {
+            occasionTimes = new ArrayList<OccasionTime>();
             occasionTimes.add(new OccasionTime());
         }
         return occasionTimes;

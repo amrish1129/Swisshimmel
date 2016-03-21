@@ -37,7 +37,7 @@ CREATE TABLE swisshimmel.OCCASION
 CREATE TABLE swisshimmel.OCCASION_TIME
 (
 `occasion_time_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
- dateTo date NOT NULL, 
+ dateTo date , 
  dateFrom date NOT NULL ,
  timeEnteredBy varchar(255),
  comment varchar(50),

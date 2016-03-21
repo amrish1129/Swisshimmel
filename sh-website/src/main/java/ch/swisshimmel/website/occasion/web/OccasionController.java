@@ -2,6 +2,8 @@ package ch.swisshimmel.website.occasion.web;
 
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +14,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.swisshimmel.website.common.constants.OccasionConstants;
 import ch.swisshimmel.website.common.ds.OccasionDS;
 import ch.swisshimmel.website.occasion.persist.entity.Occasion;
+import ch.swisshimmel.website.occasion.persist.entity.OccasionTime;
 import ch.swisshimmel.website.occasion.service.OccasionService;
+
 
 @Controller
 public class OccasionController {
 	
 	@Autowired
 	private OccasionService occasionService;
+
 
 	 @RequestMapping(value = "/occasion", method = RequestMethod.GET)
 	    public String listProperty(Model model) {
@@ -38,6 +44,8 @@ public class OccasionController {
 
 	        if (result.hasFieldErrors()) {
 	            model.addAttribute("listCountry", this.occasionService.listOccasion());
+	            model.addAttribute(OccasionConstants.OCCASION_VALUE_DS,getOccDisSettings(OccasionConstants.ADD_OCCASION));
+
 	                return "occasion";
 	           }
 	        occasionService.addOccasion(o);
@@ -45,19 +53,43 @@ public class OccasionController {
 	        return "redirect:/occasion";
 	         
 	    }
-	     
-	     
+	     	    
 	    //For add and update Property both
         @RequestMapping("/addEventTime/{id}")
-        public String addEventTime(@PathVariable("id") int id, Model model ){
-            Occasion o =  occasionService.getOccasionById(id);
+        public String addEventTime(@PathVariable("id") int id, 
+                
+            Model model,@RequestParam (value = "action", required = false) String action ,
             
-           // o.setEnabled(true);
-            model.addAttribute("occasion", o);
-            model.addAttribute(OccasionConstants.OCCASION_VALUE_DS,getOccDisSettings(OccasionConstants.ADD_EVENT_TIME));
-            return "addOccasionEvent";
+            @ModelAttribute("occasion") @Valid Occasion oIn, BindingResult result) {
+            String returnPage = "addOccasionEvent";
+            Occasion o = null;
+            
+            if(result.hasErrors()) {
+                System.out.println("Errors found");
+            }
+            
+        // Check If form has any error
+         if (null == action || action.equals("")) {
+            o = occasionService.getOccasionById(id);
+        } else if (null != action && action.equals("saveEvent") && !result.hasErrors()) {
+            id = oIn.getOccasion_id();
+            occasionService.updateOccasion(oIn);
+            o = occasionService.getOccasionById(id);
+        } else if (null != action && action.equals("addRow")) {
+            List<OccasionTime> list = oIn.getOccasionTimes();
+            list.add(new OccasionTime());
+            o = oIn;
+        }
+        
+        // o.setEnabled(true);
+        model.addAttribute("occasion", o);
+        model.addAttribute(OccasionConstants.OCCASION_VALUE_DS,
+                getOccDisSettings(OccasionConstants.ADD_EVENT_TIME));
+        return "addOccasionEvent";
              
         }
+        
+        
 
         private OccasionDS getOccDisSettings(String displayKey) {
             OccasionDS ds = new OccasionDS();
