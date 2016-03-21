@@ -1,12 +1,6 @@
 package ch.swisshimmel.website.config;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
+import core.framework.web.config.AbstractWebAppInitializer;
 
 /**
  * Webapp initializer: configures web project instead of the classic web.xml
@@ -15,13 +9,12 @@ import org.springframework.web.servlet.DispatcherServlet;
  * @author amrish
  *
  */
-//@Configuration
-public class WebAppInitializer implements WebApplicationInitializer {
+public class WebAppInitializer extends AbstractWebAppInitializer {
     
-    @Override
+   /* @Override
     public void onStartup(ServletContext servletContext)
             throws ServletException {
-        /*// Create the 'root' Spring application context
+        // Create the 'root' Spring application context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         rootContext.register(WebMvcConfig.class);
         
@@ -37,9 +30,11 @@ public class WebAppInitializer implements WebApplicationInitializer {
                 AbstractDispatcherServletInitializer.DEFAULT_SERVLET_NAME,
                 new DispatcherServlet(dispatcherServlet));
         dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/");*/
+        dispatcher.addMapping("/");
         
-        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+        servletContext.addFilter("platformFilter", new SignatureFilter()).addMappingForUrlPatterns(null, false, "/*");
+        
+        /*AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
         ctx.register(WebMvcConfig.class);
         ctx.setServletContext(servletContext);
         
@@ -47,7 +42,35 @@ public class WebAppInitializer implements WebApplicationInitializer {
                 "dispatcher", new DispatcherServlet(ctx));
         
         servlet.setLoadOnStartup(1);
-        servlet.addMapping("/");
+        servlet.addMapping("/");*/
+    //}*/
+    
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        // TODO Auto-generated method stub
+        return new Class<?>[] { RootConfig.class, DbConfig.class };
+    }
+    
+    /**
+     * Specify configuration class
+     */
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        // TODO Auto-generated method stub
+        return new Class<?>[] { WebMvcConfig.class };
+    }
+    
+    //Map DispatcherServlet to
+    /**
+     * Dispatcher-
+     *Servlet load its application context with beans 
+     *defined in the WebConfig configuration
+     *class
+     */
+    @Override
+    protected String[] getServletMappings() {
+        // TODO Auto-generated method stub
+        return new String[] { "/" };
     }
     
 }

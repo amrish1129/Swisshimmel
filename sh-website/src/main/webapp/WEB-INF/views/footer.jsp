@@ -1,3 +1,2 @@
-<h1>
-                                   <center>     Footer </center>
-</h1>
+<hr/>  
+<p>Copyright &copy; Swisshimmel</p>  

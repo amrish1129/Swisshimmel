@@ -8,6 +8,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'maven'
     apply plugin: 'eclipse'
+    
 
     project.ext['project.build.time'] = buildTime.format('yyyyMMdd-HHmmss')
 

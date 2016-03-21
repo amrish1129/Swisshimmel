@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- Define Base Tile -->
+	<definition name="base" template="/WEB-INF/views/common/template.jsp">
+		<!-- Define attributes -->
+		<put-attribute name="title" value="None" />
+        <put-attribute name="body-class" value="None" />
+        <put-attribute name="constant-content" value="/WEB-INF/views/common/constant-content.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/menu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
+		<put-attribute name="main1" value="/WEB-INF/views/empty.jsp" />
+		<put-attribute name="main2" value="/WEB-INF/views/empty.jsp" />
+		<put-attribute name="main3" value="/WEB-INF/views/empty.jsp" />
+		<put-attribute name="main4" value="/WEB-INF/views/empty.jsp" />
+		<put-attribute name="main5" value="/WEB-INF/views/empty.jsp" />
+		<put-attribute name="main6" value="/WEB-INF/views/empty.jsp" />
+		<put-attribute name="main7" value="/WEB-INF/views/empty.jsp" />
+	
+	</definition>
+	<definition name="home" extends="base">
+		<put-attribute name="body-class" value="welcome" />
+		<put-attribute name="main1" value="/WEB-INF/views/home.jsp" />
+	</definition>
+	<definition name="country" extends="base">
+		<put-attribute name="body-class" value="platform" />
+		<put-attribute name="main1" value="/WEB-INF/views/country.jsp" />
+	</definition>
+	<definition name="occasion" extends="base">
+		<put-attribute name="body-class" value="platform" />
+		<put-attribute name="main1" value="/WEB-INF/views/occasion.jsp" />
+	</definition>
+	<definition name="addOccasionEvent" extends="base">
+		<put-attribute name="body-class" value="platform" />
+		<put-attribute name="main1" value="/WEB-INF/views/addOccasionEvent.jsp" />
+	</definition>
+	<definition name="property" extends="base">
+		<put-attribute name="body-class" value="platform" />
+		<put-attribute name="main1" value="/WEB-INF/views/property.jsp" />
+	</definition>
+</tiles-definitions>

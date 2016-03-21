@@ -1,6 +1,6 @@
 #Property 
 
-CREATE TABLE dbperson.Property
+CREATE TABLE swisshimmel.Property
 (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 propId varchar(255),
@@ -19,7 +19,7 @@ PRIMARY KEY (`id`)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 #Country
-CREATE TABLE dbperson.OCCASION
+CREATE TABLE swisshimmel.OCCASION
 (
 `occasion_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
  occasionName varchar(255) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE dbperson.OCCASION
 
 
 #OCCASION TIMINGS
-CREATE TABLE dbperson.OCCASION_TIME
+CREATE TABLE swisshimmel.OCCASION_TIME
 (
 `occasion_time_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
  dateTo date NOT NULL, 
@@ -50,7 +50,7 @@ CREATE TABLE dbperson.OCCASION_TIME
 
 #Country
 
-CREATE TABLE dbperson.COUNTRY
+CREATE TABLE swisshimmel.COUNTRY
 (
 `countryid` int(11) unsigned NOT NULL AUTO_INCREMENT,
  countryName varchar(70) UNIQUE,

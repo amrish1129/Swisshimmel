@@ -13,6 +13,8 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+import core.framework.web.config.AbstractRootConfig;
+
 @Configuration
 public class DbConfig {
 
@@ -21,9 +23,9 @@ public class DbConfig {
     public DataSource getDataSource() throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setDriverClass("com.mysql.jdbc.Driver");
-        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/dbPerson");
-        dataSource.setUser("root");
-        dataSource.setPassword("Chhapolia@123");
+        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/swisshimmel");
+        dataSource.setUser("dev");
+        dataSource.setPassword("hs123");
         dataSource.setMaxIdleTime(120);
         dataSource.setMaxPoolSize(10);
         dataSource.setUnreturnedConnectionTimeout(150);
