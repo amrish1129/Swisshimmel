@@ -61,3 +61,18 @@ CREATE TABLE swisshimmel.COUNTRY
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
+CREATE TABLE `swisshimmel`.`USER_AUTHENTICATION` (
+  `id` INT NOT NULL COMMENT '',
+  `username` VARCHAR(45) NOT NULL COMMENT '',
+  `password` VARCHAR(45) NOT NULL COMMENT '',
+  `enabled` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC)  COMMENT '');
+
+CREATE TABLE `swisshimmel`.`USER_AUTHORIZATION` (
+  `id` INT NOT NULL COMMENT '',
+  `usename` VARCHAR(45) NOT NULL COMMENT '',
+  `authority` VARCHAR(45) NOT NULL COMMENT '',
+ PRIMARY KEY (`id`)  COMMENT '');
+
+

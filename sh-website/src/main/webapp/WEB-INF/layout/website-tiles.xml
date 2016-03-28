@@ -21,6 +21,26 @@
 		<put-attribute name="main7" value="/WEB-INF/views/empty.jsp" />
 	
 	</definition>
+	<definition name="login" extends="base">
+        <put-attribute name="title" value="User Service Login" />
+        <put-attribute name="body-class" value="accessPage" />
+        <put-attribute name="header" value="/WEB-INF/views/empty.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/empty.jsp" />
+        <put-attribute name="main1" value="/WEB-INF/views/login.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/empty.jsp" />
+    </definition>
+    <definition name="secure" extends="base">
+		<put-attribute name="body-class" value="welcome" />
+		<put-attribute name="main1" value="/WEB-INF/views/secure.jsp" />
+	</definition>
+	<definition name="admin" extends="base">
+		<put-attribute name="body-class" value="welcome" />
+		<put-attribute name="main1" value="/WEB-INF/views/admin.jsp" />
+	</definition>
+	<definition name="unprotected" extends="base">
+		<put-attribute name="body-class" value="welcome" />
+		<put-attribute name="main1" value="/WEB-INF/views/unprotected.jsp" />
+	</definition>
 	<definition name="home" extends="base">
 		<put-attribute name="body-class" value="welcome" />
 		<put-attribute name="main1" value="/WEB-INF/views/home.jsp" />
