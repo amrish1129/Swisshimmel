@@ -47,7 +47,7 @@
 <c:url var="addOccasion" value="/occasion/add" ></c:url>
  
 <form:form action="${addEvent}" commandName="occasion">
-<div>
+<div class="container">
   
 <jsp:include page="occasionInfo.jsp"/>
 		
@@ -67,18 +67,26 @@
         <tr>
             <td>  
          
-           <input type="hidden"   name="occasionTimes[${status.index}].occasion_id" value="${occasion.occasion_id}" />
            <input type="hidden"   name="occasionTimes[${status.index}].occasion_time_id" value="${occasion.occasionTimes[status.index].occasion_time_id}" />
+           <input type="hidden"   name="occasionTimes[${status.index}].occasion_id" value="${occasion.occasionTimes[status.index].occasion_id}" />
+           
         
             <form:input path="occasionTimes[${status.index}].dateFromStr"  value="${occasionTime.dateFromStr}" size="11"  class="datepicker" />
-             <form:errors path="occasionTimes[${status.index}].dateFromStr" cssClass="error"/>
-            
-            
+            <form:errors path="occasionTimes[${status.index}].dateFromStr" cssClass="error"/>
+            	
              </td>
             <td>  <form:input path="occasionTimes[${status.index}].dateToStr"  value="${occasionTime.dateToStr}" size="11"  class="datepicker" /> </td>
             <td>  <form:input path="occasionTimes[${status.index}].comment"  value="${occasionTime.comment}"  size="11"  /> </td>
             <td>  <form:input path="occasionTimes[${status.index}].wiki"  value="${occasionTime.wiki}"  size="11"  /> </td>
             <td>
+            
+             <input type="image" src="/swisshimmel/img/save_button.png"  WIDTH="20"  HEIGHT="20" name="action" 
+            value="saveEvent${occasion.occasionTimes[status.index].occasion_time_id}#${status.index}" ALT="">	
+            
+            <input type="image" src="/swisshimmel/img/delete_button.png"  WIDTH="20"  HEIGHT="20" name="action" 
+            value="delete${occasion.occasionTimes[status.index].occasion_time_id}#${status.index}" ALT="">
+           					 
+            </td>
             
 
         </tr>
@@ -91,7 +99,7 @@
 
 <br>
 <br>
-  <input type="submit" name="action" value="saveEvent" />
+  <input type="submit" name="action" value="saveEvents" />
   <input type="submit" name="action" value="addRow" />
 <br>
 <br>

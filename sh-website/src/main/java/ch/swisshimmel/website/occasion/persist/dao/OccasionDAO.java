@@ -13,4 +13,6 @@ public interface OccasionDAO {
     public Occasion getOccasionById(int id);
     public void removeOccasion(int id);
     public List<OccasionTime> getUpcomingOccassion(int i);
+    public void deleteEvent(int i);
+    public OccasionTime saveEvent(OccasionTime ot);
 }

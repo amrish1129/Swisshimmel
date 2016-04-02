@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -48,14 +47,21 @@ public class OccasionTime {
     private String wiki;
     
 
+   public OccasionTime() {
+        // default constructor
+   }
+   
+   public OccasionTime(int occasion_id ) {
+       this.occasion_id = occasion_id;
+   }
+    
+    
     @ManyToOne(optional=false)
     @JoinColumn(name="occasion_id",referencedColumnName="occasion_id", insertable=false, updatable=false)
     private Occasion occasion;
 
     @Transient
-    @NotBlank(message="Mandatory Field")
-    @NotNull(message="Mandatory Field")
-    @NotEmpty
+    @NotEmpty(message="Mandatory Field")
     private String dateFromStr;
     
     @Transient

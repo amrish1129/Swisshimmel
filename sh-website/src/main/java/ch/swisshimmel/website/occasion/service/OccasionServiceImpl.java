@@ -60,4 +60,19 @@ public class OccasionServiceImpl implements OccasionService {
         return null;
     }
 
+    
+    @Override
+    @Transactional
+    public void deleteEvent(int i) {
+        this.occasionDAO.deleteEvent(i);
+    }
+
+
+    @Override
+    @Transactional
+    public OccasionTime saveEvent(OccasionTime oT) {
+        return this.occasionDAO.saveEvent(oT);
+        
+    }
+    
 }
