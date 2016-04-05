@@ -80,10 +80,10 @@
             <td>  <form:input path="occasionTimes[${status.index}].wiki"  value="${occasionTime.wiki}"  size="11"  /> </td>
             <td>
             
-             <input type="image" src="/swisshimmel/img/save_button.png"  WIDTH="20"  HEIGHT="20" name="action" 
+             <input type="image" src="/swisshimmel/static/images/save_button.png"  WIDTH="20"  HEIGHT="20" name="action" 
             value="saveEvent${occasion.occasionTimes[status.index].occasion_time_id}#${status.index}" ALT="">	
             
-            <input type="image" src="/swisshimmel/img/delete_button.png"  WIDTH="20"  HEIGHT="20" name="action" 
+            <input type="image" src="/swisshimmel/static/images/delete_button.png"  WIDTH="20"  HEIGHT="20" name="action" 
             value="delete${occasion.occasionTimes[status.index].occasion_time_id}#${status.index}" ALT="">
            					 
             </td>
