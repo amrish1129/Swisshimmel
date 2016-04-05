@@ -25,7 +25,7 @@ import core.framework.web.config.AbstractWebConfig;
  * callbacks allow us to register custom interceptors, message converters,
  * argument resovlers, a validator, resource handling, and other things.
  * 
- * @author amrish
+ * @author Amrish
  * @see WebMvcConfigurerAdapter
  */
 @Configuration
