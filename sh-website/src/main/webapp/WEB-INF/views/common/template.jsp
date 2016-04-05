@@ -11,7 +11,7 @@
 </head>  
 <body class="<tiles:getAsString name="body-class"/>">  
         <div><tiles:insertAttribute name="header" /></div>  
-        <div style="float:left;padding:10px;width:15%;"><tiles:insertAttribute name="menu" /></div>  
+        <div style="float:left;padding:0px;width:17%;"><tiles:insertAttribute name="menu" /></div>  
         <div style="float:left;padding:10px;width:80%;border-left:1px solid pink;">  
         	<tiles:insertAttribute name="main1" />
         	<tiles:insertAttribute name="main2" />
