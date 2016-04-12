@@ -3,7 +3,9 @@ package ch.swisshimmel.website.occasion.web;
 
 
 import java.util.List;
+import java.util.Set;
 
+import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ import ch.swisshimmel.website.common.ds.OccasionDS;
 import ch.swisshimmel.website.occasion.persist.entity.Occasion;
 import ch.swisshimmel.website.occasion.persist.entity.OccasionTime;
 import ch.swisshimmel.website.occasion.service.OccasionService;
+import javax.validation.Validation;
+import javax.validation.Validator;
 
 
 @Controller
@@ -64,22 +68,46 @@ public class OccasionController {
             String returnPage = "addOccasionEvent";
             Occasion o = null;
             
-            if(result.hasErrors()) {
-                System.out.println("Errors found");
-            }
+          
+                
+            
             
         // Check If form has any error
-         if (null == action || action.equals("")) {
-            o = occasionService.getOccasionById(id);
-        } else if (null != action && action.equals("saveEvent") && !result.hasErrors()) {
-            id = oIn.getOccasion_id();
-            occasionService.updateOccasion(oIn);
-            o = occasionService.getOccasionById(id);
-        } else if (null != action && action.equals("addRow")) {
+         if (null == action || action.equals("") ) {
+            oIn = occasionService.getOccasionById(id);
+        } else if (null != action && action.equals("saveEvents") && !result.hasErrors()) {
+           
+            for(OccasionTime oT  : oIn.getOccasionTimes() ) {
+                    oT=occasionService.saveEvent(oT);
+                
+            }
+        
+        
+        }  else if (null != action && action.startsWith("saveEvent") && !result.hasErrors()) {
+            
+            int occasionTimeId = Integer.valueOf( action.substring(9).split("#")[0]);
+            int index =    Integer.valueOf( action.substring(9).split("#")[1]);
+            OccasionTime oT = oIn.getOccasionTimes().get(index);
+            oT= occasionService.saveEvent(oT);   
+           
+            
+            
+        }  else if (null != action && action.equals("addRow")) {
             List<OccasionTime> list = oIn.getOccasionTimes();
-            list.add(new OccasionTime());
-            o = oIn;
-        }
+            list.add(new OccasionTime(oIn.getOccasion_id()));
+        } else if (null != action && action.length() > 0 && action.startsWith("delete") ) {
+            int occasionTimeId = Integer.valueOf( action.substring(6).split("#")[0]);
+            int index =    Integer.valueOf( action.substring(6).split("#")[1]);
+            if(oIn.getOccasionTimes().get(index).getOccasion_id() != 0 ) {
+                occasionService.deleteEvent(occasionTimeId);   
+            }
+            oIn.getOccasionTimes().remove(index);
+          
+        } 
+         
+      
+         o=oIn;
+           
         
         // o.setEnabled(true);
         model.addAttribute("occasion", o);

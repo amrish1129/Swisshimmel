@@ -82,42 +82,30 @@ public class OccasionDAOImpl implements OccasionDAO {
         Session session = this.sessionFactory.getCurrentSession();
         return null;
     }
-    
-    
-   /* @Override
-    
-    
-   
-  
-     
+
     @Override
-    @Transactional
-    public Country getCountryById(int id) {
-        Session session = this.sessionFactory.getCurrentSession();      
-        Country c = (Country) session.load(Country.class, new Integer(id));
-        logger.info("Property loaded successfully, Property details="+c);
-        return c;
-    }
-    
-     (non-Javadoc)
-     * @see ch.swisshimmel.website.persist.location.dao.CountryDao#getPropertyByName(java.lang.String)
-     
-    @Override
-    @Transactional
-    public Country getCountryByName(String country) {
+    public void deleteEvent(int i) {
         Session session = this.sessionFactory.getCurrentSession();
-        List<Country> countryList = session.createQuery("from Country where " ).list();
-        return null;
+        OccasionTime oT = (OccasionTime) session.load(OccasionTime.class, new Integer(i));
+        if(null != oT){
+            session.delete(oT);
+        }        
     }
     
-     (non-Javadoc)
-     * @see ch.swisshimmel.website.persist.location.dao.CountryDao#removeCountry(int)
-     
     @Override
-    @Transactional
-    public void removeCountry(int id) {
-        
-        
-    }*/
+    public OccasionTime saveEvent(OccasionTime oT) {
+        Session session = this.sessionFactory.getCurrentSession();
+        if (oT.getOccasion_time_id() == 0 ) {
+        session.persist(oT);
+        } else {
+            session.update(oT);
+        }
+        System.out.println("Pesisted Values " + oT.getOccasion_time_id());
+        return oT;
+    }
+
+   
+
+  
     
 }

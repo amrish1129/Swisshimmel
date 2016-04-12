@@ -14,6 +14,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /*@Autowired
     DataSource dataSource;*/
     
+    /**
+     * Override to configure user-details services.
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
@@ -52,15 +55,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .userDetailsService(new SpitterUserService());
     }*/
     
+    /**
+     * Override to configure Spring Security’s filter chain.
+     */
     @Override
-    public void configure(WebSecurity security)
-    {
+    public void configure(WebSecurity security) {
         security.ignoring().antMatchers("/resource/**");
     }
-
+    
+    /**
+     * Override to configure how requests are secured by interceptors.
+     */
     @Override
-    protected void configure(HttpSecurity security) throws Exception
-    {
+    protected void configure(HttpSecurity security) throws Exception {
         security
                 .authorizeRequests()
                     .antMatchers("/signup", "/about", "/policies").permitAll()

@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -51,7 +52,10 @@ public class Occasion {
     
     
    
-    @OneToMany(targetEntity=OccasionTime.class, mappedBy="occasion_id", fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
+  /*  @OneToMany(targetEntity=OccasionTime.class, mappedBy="occasion_id", fetch=FetchType.EAGER, cascade = {CascadeType.ALL}) */
+ 
+    @OneToMany(targetEntity=OccasionTime.class, mappedBy="occasion_id", fetch=FetchType.EAGER)
+    @Valid
     private List<OccasionTime> occasionTimes = new ArrayList<OccasionTime>();
 
     
@@ -123,10 +127,6 @@ public class Occasion {
     }
 
     public List<OccasionTime> getOccasionTimes() {
-        if(null == occasionTimes || occasionTimes.size() == 0 ) {
-            occasionTimes = new ArrayList<OccasionTime>();
-            occasionTimes.add(new OccasionTime());
-        }
         return occasionTimes;
     }
 
